@@ -27,6 +27,7 @@ public class Start {
     private List<PersonSql> personSqlList;
     private List<PersonMongo> personMongoList;
 
+    @Autowired
     public Start(ServiceSQL serviceSQL, ServiceMongo serviceMongo) {
         this.serviceSQL = serviceSQL;
         this.serviceMongo = serviceMongo;
@@ -34,7 +35,7 @@ public class Start {
         this.personMongoList = new ArrayList<>();
     }
 
-    @Autowired
+
 
 
 
@@ -42,9 +43,9 @@ public class Start {
     @TimeAspect
     public void init(){
         readFromCSV();
-        serviceSQL.saveSQL(personSqlList); // 383
-//        personSqlList = serviceSQL.readSQL(); // 16
-//        serviceMongo.saveMongo(personMongoList); // 826
+//        serviceSQL.saveSQL(personSqlList); // 383
+////        personSqlList = serviceSQL.readSQL(); // 16
+        serviceMongo.saveMongo(personMongoList); // 826
 //        personMongoList = serviceMongo.readMongo(); // 23
     }
 
